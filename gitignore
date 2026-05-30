@@ -1,7 +1,6 @@
 # ==========================================
-# Java / Maven / Gradle / IDEs
+# Java / Maven / IDEs (Updated for /backend)
 # ==========================================
-# Compiled agility
 *.class
 *.log
 *.meta
@@ -16,17 +15,16 @@
 *.tar.gz
 *.rar
 
-# Build tools
+# Build tools (Matches target folder inside your backend subdirectory)
+**/target/
 .gradle/
-build/
-target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.nextDevelopmentVersion
 release.properties
 dependency-reduced-pom.xml
 
-# IDEs (IntelliJ, Eclipse, NetBeans)
+# IDEs (IntelliJ, VS Code, Eclipse)
 .idea/
 *.iml
 *.iws
@@ -34,27 +32,23 @@ dependency-reduced-pom.xml
 .project
 .settings/
 .nbproject/
+.vscode/
 *.env
 
 # ==========================================
-# Flutter / Dart
+# Flutter / Dart (Matches subfolders globally)
 # ==========================================
-# Tools
-.dart_tool/
-.packages
-.pub-cache/
-.pub/
-/build/
+**/.dart_tool/
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/build/
 
-# Web clones
+# Web clones / Linux symbols
 .sandbox/
-
-# Symbol overshoot
 *.desktop
 
 # Flutter patterns
-# (Only include if you do not check in changed versions)
-# arch-specific
 flutter_export_environment.sh
 
 # App bundle packaging
