@@ -1,0 +1,76 @@
+# ==========================================
+# Java / Maven / Gradle / IDEs
+# ==========================================
+# Compiled agility
+*.class
+*.log
+*.meta
+.lock
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Build tools
+.gradle/
+build/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.nextDevelopmentVersion
+release.properties
+dependency-reduced-pom.xml
+
+# IDEs (IntelliJ, Eclipse, NetBeans)
+.idea/
+*.iml
+*.iws
+.classpath
+.project
+.settings/
+.nbproject/
+*.env
+
+# ==========================================
+# Flutter / Dart
+# ==========================================
+# Tools
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Web clones
+.sandbox/
+
+# Symbol overshoot
+*.desktop
+
+# Flutter patterns
+# (Only include if you do not check in changed versions)
+# arch-specific
+flutter_export_environment.sh
+
+# App bundle packaging
+**.apk
+**.aab
+**.ipa
+
+# ==========================================
+# Operating Systems / General
+# ==========================================
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
