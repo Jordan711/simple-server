@@ -11,6 +11,7 @@ class APIPing extends StatefulWidget {
 class _APIPingState extends State<APIPing> {
   final _formKey = GlobalKey<FormState>();
   final _ipController = TextEditingController();
+  final _portController = TextEditingController();
   final _endpointController = TextEditingController();
 
   final ipRegex = RegExp(
@@ -45,6 +46,23 @@ class _APIPingState extends State<APIPing> {
               SizedBox(height: 25.0),
 
               TextFormField(
+                controller: _portController,
+                decoration: const InputDecoration(labelText: "Server Port"),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter a valid port";
+                  }
+                  final parsedPort = num.tryParse(value);
+                  if (parsedPort == null) {
+                    return "Invalid port number";
+                  }
+                  return null;
+                },
+              ),
+
+              SizedBox(height: 25.0),
+
+              TextFormField(
                 controller: _endpointController,
                 decoration: const InputDecoration(labelText: "Endpoint"),
                 validator: (value) {
@@ -61,9 +79,12 @@ class _APIPingState extends State<APIPing> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     final targetIp = _ipController.text.trim();
+                    final portNumber = _portController.text.trim();
                     final endpoint = _endpointController.text.trim();
 
-                    final url = Uri.parse('http://$targetIp/api/$endpoint');
+                    final url = Uri.parse(
+                      'http://$targetIp:$portNumber/api/$endpoint',
+                    );
                     try {
                       print('Sending request to: $url');
 
@@ -72,20 +93,22 @@ class _APIPingState extends State<APIPing> {
 
                       // 5. Handle the response status from simple-server
                       if (response.statusCode == 200) {
+                        if (!mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(response.body),
-                            backgroundColor: Colors.red, // Optional styling
+                            backgroundColor: const Color.fromARGB(255, 0, 94, 3), // Optional styling
                             duration: Duration(
                               seconds: 2,
                             ), // How long it stays on screen
                           ),
                         );
                       } else {
+                        if (!mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(response.statusCode.toString()),
-                            backgroundColor: Colors.red, // Optional styling
+                            backgroundColor: const Color.fromARGB(255, 125, 125, 0), // Optional styling
                             duration: Duration(
                               seconds: 2,
                             ), // How long it stays on screen
